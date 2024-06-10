@@ -182,7 +182,7 @@ impl cipher_u128 for u128{
             u128_[cursor] = u128_[cursor].overflowing_add(ch0 as u8).0;
             u128_[cursor] = u128_[cursor].overflowing_add(ch0.rotate_left(8) as u8).0;
         }
-        let PK_len = PK_as_vec.len();
+        let PK_len = PK.chars().count();
         for ch in u128_{
             let ch0 = ch as usize; let cursor = ch0 % PK_len;
             u128_[cursor % 16] = u128_[cursor].overflowing_add(PK.chars().nth(cursor).unwrap() as u8).0;
@@ -213,7 +213,7 @@ impl cipher_u128 for u128{
             u128_[cursor] = u128_[cursor].overflowing_add(ch0 as u8).0;
             u128_[cursor] = u128_[cursor].overflowing_add(ch0.rotate_left(8) as u8).0;
         }
-        let PK_len = PK_as_vec.len();
+        let PK_len = PK.chars().count();
         for ch in u128_{
             let ch0 = ch as usize; let cursor = ch0 % PK_len;
             u128_[cursor % 16] = u128_[cursor].overflowing_add(PK.chars().nth(cursor).unwrap() as u8).0;
