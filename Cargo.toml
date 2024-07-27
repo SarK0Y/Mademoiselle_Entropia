@@ -9,9 +9,9 @@ repository = "https://github.com/SarK0Y/Mademoiselle_Entropia"
 description = "Extremely strong, stupidly simple and relatively fast symmetric cipher.. check out the Readne for explanation. Have a great day, Dear User 💯❤️"
 #crate_type = ["staticlib"]
 keywords = ["encryption", "symmetric", "exotic", "strong", "fast"]
-categories = ["encryption", "command-line-utilities"]
+categories = ["cryptography", "command-line-utilities"]
 [lib]
-crate_type = ["lib"]
+crate-type = ["lib"]
 [dependencies]
 chrono = "0.4.31"
 substring = "1.4.5"
