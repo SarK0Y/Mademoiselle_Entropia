@@ -10,6 +10,7 @@
 #[allow(arithmetic_overflow)]
 #[allow(temporary_cstring_as_ptr)]
 pub mod Mademoiselle_Entropia;
+pub mod true_rnd;
 //use Mademoiselle_Entropia::*;
 pub mod help_funcs;
 #[path="custom.traits.rs"]

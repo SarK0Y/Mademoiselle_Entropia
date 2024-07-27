@@ -96,3 +96,13 @@ impl file_exts for std::fs::File{
         match self.write(&patch){Ok(l) => l, Err(e) => return println!("{func_name} got {:?}", e)};
     }
 }
+pub(crate) fn delay_ms(sleep: u64){
+    std::thread::sleep(std::time::Duration::from_millis(sleep));
+}
+pub(crate) fn delay_ns(sleep: u64){
+    std::thread::sleep(std::time::Duration::from_nanos(sleep));
+}
+pub(crate) fn delay_mcs(sleep: u64){
+    std::thread::sleep(std::time::Duration::from_micros(sleep));
+}
+//fn
