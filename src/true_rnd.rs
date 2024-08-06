@@ -1,5 +1,5 @@
 /*Order of the Chaos*/
-use num_traits::{ops::overflowing::OverflowingMul, PrimInt};
+use num_traits::{ops::overflowing::{OverflowingAdd, OverflowingMul}, PrimInt};
 use unic_ucd::common::is_alphanumeric;
 use std::thread::spawn;
 #[path = "signals.rs"]
@@ -111,7 +111,7 @@ pub fn UID_UTF8(num_of_bytes: usize) -> String{
         loop {
             if shift == 4 {break;}
             let rnd_byte = get_true_rnd_u8(Some(seed));
-            seed = seed.overflowing_mul(rnd_byte.clone() ).0.rotate_left(rnd_byte.clone() as u32);
+            seed = seed.overflowing_add(rnd_byte.clone() ).0.rotate_left(rnd_byte.clone() as u32);
             rnd_bytes.push(rnd_byte);
             if shift == 0{
                 mask = rnd_byte as u32;
@@ -136,7 +136,7 @@ pub fn UID_UTF8(num_of_bytes: usize) -> String{
         if is_alphanumeric(ch){count_down.dec(); uid.push(ch)}
         valid_char = 0;
     }
-#[cfg(feature = "in_dbg")] println!("\n{:?}\n {:?}", rnd_bytes, uid.as_bytes() );
+//#[cfg(feature = "in_dbg")] println!("\n{:?}\n {:?}", rnd_bytes, uid.as_bytes() );
     uid
 }
 //fn
