@@ -24,6 +24,19 @@ pub fn get_file(filename: &String) -> Result<std::fs::File, std::io::ErrorKind>{
         },
     }
 }
+pub fn get_file_append(filename: &String) -> Result<std::fs::File, std::io::ErrorKind>{
+    if !Path::new(filename).exists(){println!("{} doesn't exist.", filename);return Err(std::io::ErrorKind::NotFound)}
+    match std::fs::File::options().write(true).read(true).append(true).open(filename){
+        Ok(file) => {return Ok(file)},
+        Err(e) => match e.kind(){
+            std::io::ErrorKind::PermissionDenied => {println!("Sorry, Dear User, You have no permissions to {}", filename); return Err(std::io::ErrorKind::PermissionDenied)},
+            std::io::ErrorKind::InvalidData => {println!("Sorry, Dear User, {} was corrupted", filename); return Err(std::io::ErrorKind::InvalidData)},
+            std::io::ErrorKind::OutOfMemory => {println!("Sorry, Dear User, No memory to process {}", filename); return Err(std::io::ErrorKind::OutOfMemory)},
+            std::io::ErrorKind::Other => {println!("Sorry, Dear User, Not sure of error with {}", filename); return Err(std::io::ErrorKind::Other)},
+            _ =>  {println!("Sorry, Dear User, Not sure of error with {}", filename); return Err(std::io::ErrorKind::Other)},
+        },
+    }
+}
 pub fn new_IK(size: usize) -> Vec<u8>{
     let  func_name = "new_IK".strn();
     let mut rnd = match get_file(&"/dev/urandom".strn()){Ok(f) => f, _ => return vec![0; 0]};
