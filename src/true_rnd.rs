@@ -139,4 +139,15 @@ pub fn UID_UTF8(num_of_bytes: usize) -> String{
 //#[cfg(feature = "in_dbg")] println!("\n{:?}\n {:?}", rnd_bytes, uid.as_bytes() );
     uid
 }
+pub fn get_true_rnd_u64 () -> u64 {
+    let mut byte = get_true_rnd_u8(Some(47) );
+    let mut u64_: u64 = 0;
+    let mut shift: u64;
+    for i in 0..8{
+        byte = get_true_rnd_u8(Some (byte) );
+        shift = byte as u64;
+        u64_ += shift << i; 
+    }
+u64_
+}
 //fn
