@@ -140,6 +140,14 @@ pub fn UID_UTF8(num_of_bytes: usize) -> String{
     uid
 }
 pub fn get_true_rnd_u64 () -> u64 {
+    use once_cell::sync::Lazy;
+    static mut u64_: Lazy <u64> = Lazy::new (|| { __get_true_rnd_u64() });
+    unsafe {
+        let ret = *u64_;
+        std::thread::spawn(|| {*u64_ = __get_true_rnd_u64() }); ret
+    }
+}
+pub fn __get_true_rnd_u64 () -> u64 {
     let mut byte = get_true_rnd_u8(Some(47) );
     let mut u64_: u64 = 0;
     let mut shift: u64;
