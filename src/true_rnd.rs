@@ -158,4 +158,23 @@ pub fn __get_true_rnd_u64 () -> u64 {
     }
 u64_
 }
+pub fn get_true_rnd_u32 () -> u32 {
+    use once_cell::sync::Lazy;
+    static mut u32_: Lazy <u32> = Lazy::new (|| { __get_true_rnd_u32() });
+    unsafe {
+        let ret = *u32_;
+        std::thread::spawn(|| {*u32_ = __get_true_rnd_u32() }); ret
+    }
+}
+pub fn __get_true_rnd_u32 () -> u32 {
+    let mut byte = get_true_rnd_u8(Some(47) );
+    let mut u32_: u32 = 0;
+    let mut shift: u32;
+    for i in 0..4{
+        byte = get_true_rnd_u8(Some (byte) );
+        shift = byte as u32;
+        u32_ += shift << i; 
+    }
+u32_
+}
 //fn
