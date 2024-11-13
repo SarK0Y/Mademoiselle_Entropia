@@ -124,7 +124,7 @@ pub fn UID_UTF8(num_of_bytes: usize) -> String{
                 mask2 = rnd_byte as u32;
                 mask2 = mask2.overflowing_shl(shift).0;
             }
-            if shift == 1{
+            if shift == 3{
                 mask3 = rnd_byte as u32;
                 mask3 = mask3.overflowing_shl(shift).0;
             }

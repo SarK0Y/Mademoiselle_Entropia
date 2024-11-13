@@ -1,6 +1,6 @@
 [package]
 name = "Mademoiselle_Entropia"
-version = "1.11.8"
+version = "1.11.9"
 edition = "2021"
 authors = ["Evgeney Knyazhev (SarK0Y) <sark0y@protonmail.com>"]
 license-file = "LICENSE"
