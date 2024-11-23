@@ -177,4 +177,15 @@ pub fn __get_true_rnd_u32 () -> u32 {
     }
 u32_
 }
+pub fn __get_true_rnd_i32 () -> i32 {
+    let mut byte = get_true_rnd_u8(Some(47) );
+    let mut u32_: u32 = 0;
+    let mut shift: u32;
+    for i in 0..4{
+        byte = get_true_rnd_u8(Some (byte) );
+        shift = byte as u32;
+        u32_ += shift << i; 
+    }
+ u32_ as i32
+}
 //fn
