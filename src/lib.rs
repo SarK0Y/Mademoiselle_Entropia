@@ -1,4 +1,4 @@
-/* © Knyazhev Evgeney (SarK0Y) 2010-2024 */
+/* © Knyazhev Evgeney (SarK0Y) 2010-2025 */
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
 #![allow(dead_code)]
