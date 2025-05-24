@@ -14,7 +14,7 @@ pub mod true_rnd;
 //use Mademoiselle_Entropia::*;
 pub mod help_funcs;
 #[path="custom.traits.rs"]
-mod custom_traits;
+pub mod custom_traits;
 fn main (){
   // tst(); 
 }
