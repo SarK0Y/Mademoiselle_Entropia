@@ -4,10 +4,10 @@ use std::io::Read;
 #[cfg(feature="tam")] 
 use crate::{globs18::strn_2_usize, usize_2_i64, core18::i64_2_usize, errMsg0};
 #[cfg(feature="tam")] use crate::run_cmd_out_sync;
-pub trait STRN {
+pub(crate) trait STRN {
     fn strn(&self) -> String;
 }
-pub trait STRN_usize {
+pub(crate) trait STRN_usize {
     fn usize0(&self) -> usize;
 }
 #[cfg(feature="tam")] 
@@ -16,7 +16,7 @@ impl STRN_usize for String{
         strn_2_usize(&self.strn() ).unwrap_or(0)
     }
 }
-pub trait turn_2_i64 {
+pub(crate) trait turn_2_i64 {
     fn i640(&self) -> i64;
 }
 #[cfg(feature="tam")] 
