@@ -10,7 +10,8 @@ pub fn InterruptMsg(msg: &str) {
         "Interrupt msg: {}",
         msg
     );
-    println! ("{msg}");
+    println! ("{msg}\nDear User, press any key to continue :) ");
+    getkey ();
 }
 
 pub fn getch() -> char {
