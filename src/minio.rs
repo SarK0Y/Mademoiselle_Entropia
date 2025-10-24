@@ -5,6 +5,18 @@ use std::io::Write;
 use std::io;
 use std::io::Read; 
 use crate::custom_traits::STRN;
+#[macro_export]
+macro_rules! _break {
+    ($input:expr) => {
+        println!(
+            "File: {}\nLine: {}\nInput: {:?}",
+        file!(),
+        line!(),
+        stringify! ($input ) 
+    );
+        InterruptMsg (&$input);
+    };
+}
 pub fn InterruptMsg(msg: &str) {
     let msg = format!(
         "Interrupt msg: {}",
@@ -13,7 +25,6 @@ pub fn InterruptMsg(msg: &str) {
     println! ("{msg}\nDear User, press any key to continue :) ");
     getkey ();
 }
-
 pub fn getch() -> char {
     let mut ch: char = '\0';
     let mut stdin = io::stdin();
